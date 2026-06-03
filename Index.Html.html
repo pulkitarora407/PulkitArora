@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulkit Arora — Digital Marketer & Brand Growth Strategist</title>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & ROOT ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #060608;
+  --bg2: #0d0d12;
+  --bg3: #12121a;
+  --glass: rgba(255,255,255,0.03);
+  --glass-border: rgba(255,255,255,0.07);
+  --glass-hover: rgba(255,255,255,0.06);
+  --accent: #6c63ff;
+  --accent2: #ff6b6b;
+  --accent3: #43e97b;
+  --gold: #f5c842;
+  --text: #f0eff8;
+  --muted: #7a7990;
+  --muted2: #4a4960;
+  --display: 'Syne', sans-serif;
+  --body: 'DM Sans', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ── CUSTOM CURSOR ── */
+#cursor {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--accent);
+  position: fixed; pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s, width 0.3s, height 0.3s, opacity 0.3s;
+  mix-blend-mode: screen;
+}
+#cursor-follower {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid rgba(108,99,255,0.4);
+  position: fixed; pointer-events: none; z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: all 0.18s ease;
+}
+body:hover #cursor { opacity: 1; }
+
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 1000; pointer-events: none;
+  opacity: 0.018;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.4rem 6vw;
+  background: rgba(6,6,8,0.7);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  transition: padding 0.3s;
+}
+.nav-logo {
+  font-family: var(--display);
+  font-size: 1.15rem; font-weight: 800;
+  letter-spacing: -0.01em; color: var(--text);
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  color: var(--muted); text-decoration: none;
+  font-size: 12.5px; letter-spacing: 0.09em; text-transform: uppercase; font-weight: 500;
+  transition: color 0.2s; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -3px; left: 0;
+  width: 0; height: 1px; background: var(--accent);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { width: 100%; }
+.nav-hire {
+  background: var(--accent); color: #fff;
+  padding: 0.6rem 1.5rem; border-radius: 100px;
+  font-size: 12.5px; font-weight: 600; letter-spacing: 0.06em;
+  border: none; cursor: none; font-family: var(--body);
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 20px rgba(108,99,255,0.3);
+}
+.nav-hire:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(108,99,255,0.5); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 10rem 6vw 5rem;
+  position: relative; overflow: hidden;
+}
+.hero-bg-orbs {
+  position: absolute; inset: 0; overflow: hidden; z-index: 0;
+}
+.orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(80px); opacity: 0.15; animation: orbFloat 12s ease-in-out infinite;
+}
+.orb1 { width: 600px; height: 600px; background: var(--accent); top: -15%; right: -10%; animation-delay: 0s; }
+.orb2 { width: 400px; height: 400px; background: var(--accent2); bottom: 0%; left: -10%; animation-delay: -4s; }
+.orb3 { width: 300px; height: 300px; background: var(--accent3); top: 40%; left: 40%; animation-delay: -8s; opacity: 0.08; }
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 30px) scale(0.95); }
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(108,99,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(108,99,255,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+.hero-content { position: relative; z-index: 1; max-width: 900px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(108,99,255,0.1); border: 1px solid rgba(108,99,255,0.2);
+  padding: 7px 18px; border-radius: 100px; margin-bottom: 2rem;
+  font-size: 12px; color: #a099ff; letter-spacing: 0.1em; text-transform: uppercase;
+  animation: fadeUp 0.7s ease both;
+}
+.badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent3); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
+h1.hero-title {
+  font-family: var(--display);
+  font-size: clamp(2.8rem, 6.5vw, 6.2rem);
+  font-weight: 800; line-height: 1.0;
+  letter-spacing: -0.03em;
+  animation: fadeUp 0.7s ease 0.1s both;
+}
+h1.hero-title .grad {
+  background: linear-gradient(135deg, #6c63ff 0%, #a78bfa 40%, #ff6b6b 80%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-tagline {
+  font-size: 13px; color: var(--muted); letter-spacing: 0.12em;
+  text-transform: uppercase; margin-bottom: 1rem;
+  animation: fadeUp 0.7s ease 0.05s both;
+}
+.hero-sub {
+  margin-top: 1.5rem; font-size: 1.05rem; color: var(--muted);
+  max-width: 580px; font-weight: 300; line-height: 1.85;
+  animation: fadeUp 0.7s ease 0.2s both;
+}
+.hero-cta {
+  display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem;
+  animation: fadeUp 0.7s ease 0.3s both;
+}
+.btn-primary {
+  background: linear-gradient(135deg, #6c63ff, #8b7cf8);
+  color: #fff; padding: 0.9rem 2.2rem; border-radius: 100px;
+  font-size: 14px; font-weight: 600; border: none; cursor: none;
+  font-family: var(--body); letter-spacing: 0.04em;
+  box-shadow: 0 0 30px rgba(108,99,255,0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 50px rgba(108,99,255,0.55); }
+.btn-secondary {
+  background: transparent; color: var(--text);
+  padding: 0.9rem 2.2rem; border-radius: 100px;
+  font-size: 14px; font-weight: 500; border: 1px solid var(--glass-border);
+  cursor: none; font-family: var(--body); letter-spacing: 0.04em;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-secondary:hover { border-color: rgba(108,99,255,0.5); background: rgba(108,99,255,0.06); transform: translateY(-3px); }
+.hero-scroll {
+  position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: var(--muted2); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  animation: fadeUp 0.7s ease 0.6s both;
+}
+.scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, transparent, var(--accent)); animation: scrollLine 2s ease-in-out infinite; }
+@keyframes scrollLine { 0%,100%{opacity:0.3;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.2)} }
+
+/* ── MARQUEE ── */
+.marquee-wrap { overflow: hidden; padding: 1.2rem 0; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); background: var(--bg2); }
+.marquee-track { display: flex; white-space: nowrap; animation: marquee 22s linear infinite; }
+.marquee-item {
+  font-family: var(--display); font-size: 1rem; font-weight: 700;
+  color: var(--muted2); letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0 2rem; display: inline-flex; align-items: center; gap: 1.5rem;
+}
+.marquee-item .sep { color: var(--accent); font-size: 0.7rem; }
+@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ── SECTION BASE ── */
+section { padding: 7rem 6vw; }
+.sec-label {
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent); font-weight: 600; margin-bottom: 0.8rem;
+  display: flex; align-items: center; gap: 10px;
+}
+.sec-label::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
+h2.sec-title {
+  font-family: var(--display); font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800; letter-spacing: -0.025em; color: var(--text); line-height: 1.1;
+}
+.sec-sub { color: var(--muted); font-size: 15px; font-weight: 300; max-width: 500px; margin-top: 0.7rem; line-height: 1.8; }
+
+/* ── GLASSMORPHISM CARD ── */
+.glass-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  transition: background 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.glass-card:hover {
+  background: var(--glass-hover);
+  border-color: rgba(108,99,255,0.25);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(108,99,255,0.1);
+}
+
+/* ── ABOUT ── */
+#about { background: var(--bg2); }
+.about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: center; margin-top: 4rem; }
+.about-photo-wrap { position: relative; }
+.about-photo {
+  width: 100%; aspect-ratio: 3/4; border-radius: 24px;
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  border: 1px solid var(--glass-border);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 1rem; color: var(--muted);
+  font-size: 13px; letter-spacing: 0.08em;
+  position: relative; overflow: hidden;
+}
+.about-photo::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(108,99,255,0.15), transparent 60%, rgba(255,107,107,0.1));
+}
+.photo-initials {
+  font-family: var(--display); font-size: 5rem; font-weight: 800;
+  background: linear-gradient(135deg, #6c63ff, #ff6b6b);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  position: relative; z-index: 1;
+}
+.about-badge {
+  position: absolute; bottom: -1.5rem; right: -1.5rem;
+  background: linear-gradient(135deg, #6c63ff, #8b7cf8);
+  border-radius: 16px; padding: 1.2rem 1.5rem; text-align: center;
+  box-shadow: 0 10px 40px rgba(108,99,255,0.4);
+}
+.about-badge-num { font-family: var(--display); font-size: 2rem; font-weight: 800; color: #fff; line-height: 1; }
+.about-badge-text { font-size: 11px; color: rgba(255,255,255,0.7); letter-spacing: 0.08em; margin-top: 3px; }
+.about-text h3 { font-family: var(--display); font-size: 2rem; font-weight: 800; margin-bottom: 1.2rem; letter-spacing: -0.02em; }
+.about-text p { color: var(--muted); font-size: 15px; line-height: 1.9; font-weight: 300; margin-bottom: 1rem; }
+.about-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.5rem; }
+.chip {
+  font-size: 12px; padding: 5px 14px; border-radius: 100px;
+  border: 1px solid var(--glass-border); color: var(--muted);
+  transition: all 0.2s; cursor: none;
+}
+.chip:hover { border-color: var(--accent); color: var(--accent); background: rgba(108,99,255,0.08); }
+
+/* ── EXPERTISE ── */
+#expertise { background: var(--bg); }
+.expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; margin-top: 3.5rem; }
+.expertise-card {
+  padding: 1.8rem 1.5rem; border-radius: 18px; cursor: none;
+  position: relative; overflow: hidden;
+}
+.expertise-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(108,99,255,0.1) 0%, transparent 100%);
+  opacity: 0; transition: opacity 0.3s;
+}
+.expertise-card:hover::before { opacity: 1; }
+.exp-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+.exp-name { font-family: var(--display); font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+.exp-desc { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+.exp-line { width: 30px; height: 2px; background: var(--accent); border-radius: 2px; margin-top: 1rem; transition: width 0.3s; }
+.expertise-card:hover .exp-line { width: 60px; }
+
+/* ── EXPERIENCE ── */
+#experience { background: var(--bg2); }
+.exp-timeline { position: relative; margin-top: 3.5rem; padding-left: 2.5rem; }
+.exp-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--accent), transparent); }
+.exp-item { position: relative; margin-bottom: 3rem; }
+.exp-item::before {
+  content: ''; position: absolute; left: -2.5rem; top: 6px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 15px rgba(108,99,255,0.6);
+  transform: translateX(-4.5px);
+}
+.exp-item-inner { padding: 1.8rem 2rem; border-radius: 18px; }
+.exp-role { font-family: var(--display); font-size: 1.25rem; font-weight: 800; letter-spacing: -0.01em; }
+.exp-company { font-size: 13px; color: var(--accent); font-weight: 500; margin-top: 4px; letter-spacing: 0.04em; }
+.exp-period { font-size: 11.5px; color: var(--muted2); margin-top: 3px; letter-spacing: 0.06em; text-transform: uppercase; }
+.exp-bullets { margin-top: 1rem; list-style: none; }
+.exp-bullets li { font-size: 13.5px; color: var(--muted); line-height: 1.7; padding: 3px 0; display: flex; gap: 10px; }
+.exp-bullets li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+
+/* ── PROJECTS ── */
+#projects { background: var(--bg); }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 3.5rem; }
+.project-card { border-radius: 20px; overflow: hidden; cursor: none; }
+.project-visual {
+  height: 200px; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.pv-1 { background: linear-gradient(135deg, #1a0533, #2d1b69, #6c63ff22); }
+.pv-2 { background: linear-gradient(135deg, #1a0a0a, #3d1515, #ff6b6b22); }
+.pv-3 { background: linear-gradient(135deg, #0a1a0a, #153d15, #43e97b22); }
+.pv-4 { background: linear-gradient(135deg, #1a150a, #3d320a, #f5c84222); }
+.pv-5 { background: linear-gradient(135deg, #0a1530, #0f2460, #4facfe22); }
+.pv-6 { background: linear-gradient(135deg, #1a0a1a, #3d153d, #f857a622); }
+.pv-7 { background: linear-gradient(135deg, #0a1a15, #0f3d2d, #43e97b22); }
+.project-visual-icon { font-size: 4rem; position: relative; z-index: 1; }
+.project-visual-bg {
+  position: absolute; inset: 0; font-family: var(--display);
+  font-size: 5rem; font-weight: 800; color: rgba(255,255,255,0.03);
+  display: flex; align-items: center; justify-content: center;
+  letter-spacing: 0.1em;
+}
+.proj-tag {
+  position: absolute; top: 1rem; left: 1rem;
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  background: rgba(0,0,0,0.5); padding: 4px 10px; border-radius: 100px;
+  color: var(--muted); border: 1px solid var(--glass-border);
+}
+.project-body { padding: 1.5rem; }
+.project-body h3 { font-family: var(--display); font-size: 1.15rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+.project-body p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+.project-result { margin-top: 1rem; font-size: 12px; color: var(--accent3); font-weight: 500; letter-spacing: 0.04em; display: flex; align-items: center; gap: 6px; }
+.project-result::before { content: '✦'; font-size: 8px; }
+
+/* ── SERVICES ── */
+#services { background: var(--bg2); }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3.5rem; }
+.service-card { padding: 2.2rem 2rem; border-radius: 20px; position: relative; overflow: hidden; cursor: none; }
+.service-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transform: scaleX(0); transition: transform 0.4s; transform-origin: left;
+}
+.service-card:hover::after { transform: scaleX(1); }
+.svc-icon { font-size: 2.2rem; margin-bottom: 1.2rem; display: block; }
+.svc-name { font-family: var(--display); font-size: 1.2rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 0.7rem; }
+.svc-desc { font-size: 13.5px; color: var(--muted); line-height: 1.7; font-weight: 300; }
+.svc-price { margin-top: 1.5rem; font-size: 12px; color: var(--accent); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* ── ACHIEVEMENTS ── */
+#achievements { background: var(--bg); }
+.achievements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-top: 3.5rem; }
+.ach-card { padding: 2rem; border-radius: 18px; position: relative; overflow: hidden; cursor: none; }
+.ach-num { font-family: var(--display); font-size: 3rem; font-weight: 800; line-height: 1; color: transparent;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; background-clip: text; }
+.ach-title { font-family: var(--display); font-size: 1.05rem; font-weight: 700; margin: 0.5rem 0; }
+.ach-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+/* ── STATS BAND ── */
+.stats-band {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);
+  background: var(--bg2);
+}
+.stat-cell {
+  padding: 3rem 2rem; text-align: center;
+  border-right: 1px solid var(--glass-border); position: relative;
+}
+.stat-cell:last-child { border-right: none; }
+.stat-big { font-family: var(--display); font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 800; line-height: 1; color: var(--text); }
+.stat-big span { color: var(--accent); }
+.stat-label { font-size: 12px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 6px; }
+
+/* ── CONTACT ── */
+#contact { background: var(--bg); position: relative; overflow: hidden; }
+.contact-orb {
+  position: absolute; width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(108,99,255,0.08) 0%, transparent 70%);
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+}
+.contact-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.contact-headline { font-family: var(--display); font-size: clamp(2.5rem, 5vw, 5rem); font-weight: 800; line-height: 0.95; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
+.contact-headline .outline { -webkit-text-stroke: 1px rgba(255,255,255,0.2); color: transparent; }
+.contact-headline em { color: var(--accent); font-style: normal; }
+.contact-desc { color: var(--muted); font-size: 15px; font-weight: 300; line-height: 1.8; max-width: 400px; }
+.contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 2.5rem; }
+.contact-link {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1.2rem 1.5rem; border-radius: 16px;
+  text-decoration: none; color: var(--text);
+  transition: all 0.2s; cursor: none;
+}
+.contact-link:hover { background: rgba(108,99,255,0.1); border-color: rgba(108,99,255,0.3); transform: translateX(8px); }
+.cl-icon {
+  width: 46px; height: 46px; border-radius: 12px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+}
+.cl-label { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+.cl-value { font-size: 15px; font-weight: 500; margin-top: 1px; }
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 11.5px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+.field input, .field textarea, .field select {
+  background: #1a1a24; border: 1px solid var(--glass-border);
+  border-radius: 12px; padding: 0.85rem 1.1rem;
+  color: var(--text); font-family: var(--body); font-size: 14px;
+  outline: none; transition: border-color 0.2s, background 0.2s;
+  resize: vertical;
+  -webkit-appearance: none; appearance: none;
+}
+.field select option {
+  background: #1a1a24;
+  color: #f0eff8;
+  padding: 10px;
+}
+.field select option:hover,
+.field select option:focus,
+.field select option:checked {
+  background: #6c63ff;
+  color: #ffffff;
+}
+.field input:focus, .field textarea:focus, .field select:focus {
+  border-color: rgba(108,99,255,0.4); background: rgba(108,99,255,0.05);
+}
+.field input::placeholder, .field textarea::placeholder { color: var(--muted2); }
+.form-submit {
+  background: linear-gradient(135deg, #6c63ff, #8b7cf8);
+  color: #fff; padding: 1rem 2.5rem; border-radius: 100px;
+  font-size: 14px; font-weight: 600; border: none; cursor: none;
+  font-family: var(--body); letter-spacing: 0.05em; width: 100%;
+  box-shadow: 0 0 30px rgba(108,99,255,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.form-submit:hover { transform: translateY(-3px); box-shadow: 0 0 50px rgba(108,99,255,0.5); }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--glass-border); padding: 2.5rem 6vw;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  background: var(--bg2);
+}
+.footer-logo { font-family: var(--display); font-size: 1.2rem; font-weight: 800; }
+.footer-logo span { color: var(--accent); }
+.footer-links { display: flex; gap: 2rem; list-style: none; }
+.footer-links a { color: var(--muted); text-decoration: none; font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+.footer-links a:hover { color: var(--text); }
+.footer-copy { font-size: 12px; color: var(--muted2); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .about-badge { bottom: -1rem; right: 0; }
+  .stats-band { grid-template-columns: 1fr 1fr; }
+  .stat-cell:nth-child(2) { border-right: none; }
+  .stat-cell:nth-child(3) { border-right: 1px solid var(--glass-border); }
+  nav .nav-links { display: none; }
+  h1.hero-title { font-size: 2.8rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-links { display: none; }
+  body { cursor: auto; }
+  #cursor, #cursor-follower { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-follower"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">Pulkit<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-hire" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire Me</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-orbs">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+  </div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tagline">Pulkit Arora · Digital Marketing Executive · Delhi, India</div>
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Digital Marketer · SEO Executive · Meta Ads Specialist
+    </div>
+    <h1 class="hero-title">
+      Driving Brand Growth<br>
+      Through <span class="grad">SEO, Meta Ads</span><br>
+      &amp; Performance Marketing
+    </h1>
+    <p class="hero-sub">Helping brands scale with data-driven SEO, high-converting Meta ad campaigns, WhatsApp & SMS marketing, RCS messaging, social media growth, and creative digital solutions.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View My Work ↓</a>
+      <a href="#contact" class="btn-secondary">Let's Connect →</a>
+      <a href="#services" class="btn-secondary">Hire Me</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">SEO Strategy <span class="sep">✦</span></span>
+    <span class="marquee-item">Meta Ads <span class="sep">✦</span></span>
+    <span class="marquee-item">Performance Marketing <span class="sep">✦</span></span>
+    <span class="marquee-item">Lead Generation <span class="sep">✦</span></span>
+    <span class="marquee-item">Social Media Growth <span class="sep">✦</span></span>
+    <span class="marquee-item">Brand Building <span class="sep">✦</span></span>
+    <span class="marquee-item">Canva Design <span class="sep">✦</span></span>
+    <span class="marquee-item">Campaign Analytics <span class="sep">✦</span></span>
+    <span class="marquee-item">Audience Targeting <span class="sep">✦</span></span>
+    <span class="marquee-item">Conversion Optimization <span class="sep">✦</span></span>
+    <span class="marquee-item">SEO Strategy <span class="sep">✦</span></span>
+    <span class="marquee-item">Meta Ads <span class="sep">✦</span></span>
+    <span class="marquee-item">Performance Marketing <span class="sep">✦</span></span>
+    <span class="marquee-item">Lead Generation <span class="sep">✦</span></span>
+    <span class="marquee-item">Social Media Growth <span class="sep">✦</span></span>
+    <span class="marquee-item">Brand Building <span class="sep">✦</span></span>
+    <span class="marquee-item">Canva Design <span class="sep">✦</span></span>
+    <span class="marquee-item">Campaign Analytics <span class="sep">✦</span></span>
+    <span class="marquee-item">Audience Targeting <span class="sep">✦</span></span>
+    <span class="marquee-item">Conversion Optimization <span class="sep">✦</span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-label reveal">About Me</div>
+  <div class="about-grid">
+    <div class="about-photo-wrap reveal">
+      <div class="about-photo">
+        <div class="photo-initials">PA</div>
+        <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);position:relative;z-index:1;">Add Your Photo</span>
+      </div>
+      <div class="about-badge">
+        <div class="about-badge-num">2+</div>
+        <div class="about-badge-text">Years Exp.</div>
+      </div>
+    </div>
+    <div class="about-text reveal reveal-delay-2">
+      <div class="sec-label">Who I Am</div>
+      <h2 class="sec-title">Pulkit Arora</h2>
+      <p style="color:var(--accent);font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;margin-bottom:1.2rem;">Digital Marketing Executive | Meta Ads | SEO | WhatsApp & SMS | RCS | Performance Marketing</p>
+      <p>I'm a results-driven digital marketer passionate about building brands through smart digital strategies. With hands-on experience in SEO, performance marketing, Meta advertising, and social media growth, I help businesses improve visibility, generate quality leads, and achieve measurable online growth.</p>
+      <p>Currently working as <strong style="color:var(--text);">Digital Marketing Executive at Fincloud Technologies Pvt Ltd</strong>, managing digital marketing for their brand <strong style="color:var(--text);">RupeeLending</strong> — a fintech lending brand under Fincloud's portfolio. Handling the full digital marketing stack including Meta Ads, SEO, WhatsApp & SMS campaigns, RCS messaging, vendor relationships, social media, and creative design. Designated as SEO Executive but executing across every major digital channel.</p>
+      <div class="about-chips">
+        <span class="chip">SEO</span>
+        <span class="chip">Meta Ads</span>
+        <span class="chip">WhatsApp Marketing</span>
+        <span class="chip">SMS Marketing</span>
+        <span class="chip">RCS Messaging</span>
+        <span class="chip">Social Media</span>
+        <span class="chip">Vendor Handling</span>
+        <span class="chip">Canva Design</span>
+        <span class="chip">Lead Gen</span>
+        <span class="chip">Brand Strategy</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="sec-label reveal">Core Skills</div>
+  <h2 class="sec-title reveal reveal-delay-1">Core Expertise</h2>
+  <p class="sec-sub reveal reveal-delay-2">Specialized capabilities built through real campaigns and measurable results.</p>
+  <div class="expertise-grid">
+    <div class="expertise-card glass-card reveal">
+      <span class="exp-icon">🔍</span>
+      <div class="exp-name">Search Engine Optimization</div>
+      <div class="exp-desc">On-page, off-page, technical SEO, keyword research & ranking strategy.</div>
+      <div class="exp-line"></div>
+    </div>
+    <div class="expertise-card glass-card reveal reveal-delay-1">
+      <span class="exp-icon">📣</span>
+      <div class="exp-name">Meta Ads Management</div>
+      <div class="exp-desc">Facebook & Instagram campaign creation, targeting, A/B testing & ROAS optimization.</div>
+      <div class="exp-line"></div>
+    </div>
+    <div class="expertise-card glass-card reveal reveal-delay-2">
+      <span class="exp-icon">🚀</span>
+      <div class="exp-name">Performance Marketing</div>
+      <div class="exp-desc">Full-funnel paid campaigns designed to maximize conversions and minimize CAC.</div>
+      <div class="exp-line"></div>
+    </div>
+    <div class="expertise-card glass-card reveal reveal-delay-3">
+      <span class="exp-icon">💬</span>
+      <div class="exp-name">WhatsApp & SMS Marketing</div>
+      <div class="exp-desc">Bulk WhatsApp campaigns, SMS blasts and automated messaging flows for lead nurturing and customer engagement.</div>
+      <div class="exp-line"></div>
+    </div>
+    <div class="expertise-card glass-card reveal">
+      <span class="exp-icon">📲</span>
+      <div class="exp-name">RCS Messaging</div>
+      <div class="exp-desc">Rich Communication Services campaigns — interactive branded messages with buttons, carousels and media for higher engagement.</div>
+      <div class="exp-line"></div>
+    </div>
+    <div class="expertise-card glass-card reveal reveal-delay-1">
+      <span class="exp-icon">🤝</span>
+      <div class="exp-name">Vendor Handling</div>
+      <div class="exp-desc">Managing vendor relationships, platform negotiations, tool coordination and third-party service providers for seamless campaign execution.</div>
+      <div class="exp-line"></div>
+    </div>
+    <div class="expertise-card glass-card reveal reveal-delay-3">
+      <span class="exp-icon">🎯</span>
+      <div class="exp-name">Lead Generation</div>
+      <div class="exp-desc">Targeted campaigns that attract, nurture and convert high-quality prospects.</div>
+      <div class="exp-line"></div>
+    </div>
+    <div class="expertise-card glass-card reveal">
+      <span class="exp-icon">📱</span>
+      <div class="exp-name">Social Media Marketing</div>
+      <div class="exp-desc">Platform strategy, content calendars, community growth & engagement.</div>
+      <div class="exp-line"></div>
+    </div>
+    <div class="expertise-card glass-card reveal reveal-delay-1">
+      <span class="exp-icon">✍️</span>
+      <div class="exp-name">Content Strategy</div>
+      <div class="exp-desc">SEO-aligned content plans that drive organic traffic and authority.</div>
+      <div class="exp-line"></div>
+    </div>
+    <div class="expertise-card glass-card reveal reveal-delay-2">
+      <span class="exp-icon">📈</span>
+      <div class="exp-name">Conversion Optimization</div>
+      <div class="exp-desc">Landing page analysis, funnel optimization and CRO strategies.</div>
+      <div class="exp-line"></div>
+    </div>
+    <div class="expertise-card glass-card reveal reveal-delay-3">
+      <span class="exp-icon">🏷️</span>
+      <div class="exp-name">Brand Positioning</div>
+      <div class="exp-desc">Crafting a strong, differentiated brand narrative across digital channels.</div>
+      <div class="exp-line"></div>
+    </div>
+    <div class="expertise-card glass-card reveal">
+      <span class="exp-icon">🎨</span>
+      <div class="exp-name">Graphic Designing</div>
+      <div class="exp-desc">Visual creatives, ad banners, social posts & brand identity assets.</div>
+      <div class="exp-line"></div>
+    </div>
+    <div class="expertise-card glass-card reveal reveal-delay-1">
+      <span class="exp-icon">📊</span>
+      <div class="exp-name">Campaign Analytics</div>
+      <div class="exp-desc">Data analysis, performance reporting, attribution & actionable insights.</div>
+      <div class="exp-line"></div>
+    </div>
+    <div class="expertise-card glass-card reveal reveal-delay-2">
+      <span class="exp-icon">🎯</span>
+      <div class="exp-name">Audience Targeting</div>
+      <div class="exp-desc">Custom audiences, lookalikes, retargeting and behavioral segmentation.</div>
+      <div class="exp-line"></div>
+    </div>
+    <div class="expertise-card glass-card reveal reveal-delay-3">
+      <span class="exp-icon">🖌️</span>
+      <div class="exp-name">Canva Creative Design</div>
+      <div class="exp-desc">Premium visual content creation — posters, reels covers, ad creatives & more.</div>
+      <div class="exp-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-label reveal">Career</div>
+  <h2 class="sec-title reveal reveal-delay-1">Experience</h2>
+  <p class="sec-sub reveal reveal-delay-2">Building expertise across SEO, paid media and creative marketing.</p>
+  <div class="exp-timeline">
+    <div class="exp-item reveal">
+      <div class="exp-item-inner glass-card">
+        <div class="exp-role">Digital Marketing Executive</div>
+        <div class="exp-company">Fincloud Technologies Pvt Ltd &nbsp;·&nbsp; <span style="color:var(--accent2);">RupeeLending Brand</span></div>
+        <div class="exp-period">Current Role · Delhi, India &nbsp;·&nbsp; <span style="color:var(--muted2);font-size:11px;">(Designated: SEO Executive)</span></div>
+        <ul class="exp-bullets">
+          <li>Managing end-to-end Meta Ads campaigns (Facebook & Instagram) — strategy, creatives, targeting and optimization</li>
+          <li>Running WhatsApp Marketing, SMS campaigns and RCS messaging at scale for customer engagement and lead nurturing</li>
+          <li>Handling vendor relationships — coordinating with external tools, platforms and service providers</li>
+          <li>Executing SEO strategy including on-page optimization, technical audits, keyword research and link building</li>
+          <li>Managing social media presence and content calendar across platforms</li>
+          <li>Designing basic graphic assets and posters using Canva for campaigns and social media</li>
+          <li>Analyzing campaign performance across all channels and reporting actionable insights</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal reveal-delay-1">
+      <div class="exp-item-inner glass-card">
+        <div class="exp-role">Performance Marketing Specialist</div>
+        <div class="exp-company">Freelance / Projects</div>
+        <div class="exp-period">Ongoing</div>
+        <ul class="exp-bullets">
+          <li>Managing Meta Ads campaigns (Facebook & Instagram) for lead generation and sales</li>
+          <li>Building and optimizing ad creatives, audiences and landing pages</li>
+          <li>Delivering paid campaign performance analysis and optimization reports</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal reveal-delay-2">
+      <div class="exp-item-inner glass-card">
+        <div class="exp-role">Social Media Marketing Strategist</div>
+        <div class="exp-company">Freelance / Brand Projects</div>
+        <div class="exp-period">Past Experience</div>
+        <ul class="exp-bullets">
+          <li>Developed content strategies and posting calendars for Instagram and LinkedIn</li>
+          <li>Drove organic follower growth and engagement for multiple brands</li>
+          <li>Created visual content using Canva for social media posts and campaigns</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal reveal-delay-3">
+      <div class="exp-item-inner glass-card">
+        <div class="exp-role">SEO Intern</div>
+        <div class="exp-company">Zimero Gourmet Private Limited</div>
+        <div class="exp-period">Internship · Delhi, India</div>
+        <ul class="exp-bullets">
+          <li>Assisted with on-page SEO, content optimization and keyword research</li>
+          <li>Supported technical SEO audits and performance reporting</li>
+          <li>Gained hands-on experience in search engine optimization for an F&B brand</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal reveal-delay-4">
+      <div class="exp-item-inner glass-card">
+        <div class="exp-role">Freelance Graphic Designer</div>
+        <div class="exp-company">Independent</div>
+        <div class="exp-period">Freelance</div>
+        <ul class="exp-bullets">
+          <li>Designed brand identity materials, posters, flyers and digital ad creatives</li>
+          <li>Delivered Canva-based social media templates and marketing collateral</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="stat-cell reveal">
+    <div class="stat-big">10<span>+</span></div>
+    <div class="stat-label">Campaigns Managed</div>
+  </div>
+  <div class="stat-cell reveal reveal-delay-1">
+    <div class="stat-big">5<span>+</span></div>
+    <div class="stat-label">Brands Worked With</div>
+  </div>
+  <div class="stat-cell reveal reveal-delay-2">
+    <div class="stat-big">3<span>×</span></div>
+    <div class="stat-label">Avg. Traffic Growth</div>
+  </div>
+  <div class="stat-cell reveal reveal-delay-3">
+    <div class="stat-big">100<span>%</span></div>
+    <div class="stat-label">Client Satisfaction</div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sec-label reveal">Portfolio</div>
+  <h2 class="sec-title reveal reveal-delay-1">Featured Projects</h2>
+  <p class="sec-sub reveal reveal-delay-2">Real campaigns. Real results. Real growth.</p>
+  <div class="projects-grid">
+    <div class="project-card glass-card reveal">
+      <div class="project-visual pv-1">
+        <div class="project-visual-bg">SEO</div>
+        <span class="project-visual-icon">🔍</span>
+        <span class="proj-tag">SEO</span>
+      </div>
+      <div class="project-body">
+        <h3>SEO Ranking Growth Campaign</h3>
+        <p>Developed and executed a comprehensive SEO strategy including technical audit, keyword targeting, and content optimization to significantly boost organic rankings.</p>
+        <div class="project-result">Improved keyword rankings & organic traffic</div>
+      </div>
+    </div>
+    <div class="project-card glass-card reveal reveal-delay-1">
+      <div class="project-visual pv-2">
+        <div class="project-visual-bg">META</div>
+        <span class="project-visual-icon">📣</span>
+        <span class="proj-tag">Meta Ads</span>
+      </div>
+      <div class="project-body">
+        <h3>Meta Ads Lead Generation</h3>
+        <p>Created and managed high-converting Facebook & Instagram ad campaigns with precision audience targeting, retargeting flows, and creative A/B testing.</p>
+        <div class="project-result">High-quality leads at reduced CPL</div>
+      </div>
+    </div>
+    <div class="project-card glass-card reveal reveal-delay-2">
+      <div class="project-visual pv-3">
+        <div class="project-visual-bg">SOCIAL</div>
+        <span class="project-visual-icon">📱</span>
+        <span class="proj-tag">Social Media</span>
+      </div>
+      <div class="project-body">
+        <h3>Social Media Growth Campaign</h3>
+        <p>Built and executed content strategies across Instagram and LinkedIn driving significant follower growth, engagement rate improvements and brand awareness.</p>
+        <div class="project-result">Consistent follower & engagement growth</div>
+      </div>
+    </div>
+    <div class="project-card glass-card reveal">
+      <div class="project-visual pv-4">
+        <div class="project-visual-bg">DESIGN</div>
+        <span class="project-visual-icon">🎨</span>
+        <span class="proj-tag">Graphic Design</span>
+      </div>
+      <div class="project-body">
+        <h3>Creative Poster & Flyer Designs</h3>
+        <p>Designed premium digital creatives — event posters, promotional flyers and ad banners — using Canva and design tools tailored for brand campaigns.</p>
+        <div class="project-result">High-engagement visual creatives delivered</div>
+      </div>
+    </div>
+    <div class="project-card glass-card reveal reveal-delay-1">
+      <div class="project-visual pv-5">
+        <div class="project-visual-bg">BRAND</div>
+        <span class="project-visual-icon">🏷️</span>
+        <span class="proj-tag">Brand Identity</span>
+      </div>
+      <div class="project-body">
+        <h3>Brand Identity Design Projects</h3>
+        <p>Developed complete brand identity packages including logos, color palettes, typography systems and brand guidelines for emerging businesses.</p>
+        <div class="project-result">Strong, cohesive brand identities created</div>
+      </div>
+    </div>
+    <div class="project-card glass-card reveal reveal-delay-2">
+      <div class="project-visual pv-6">
+        <div class="project-visual-bg">WEB</div>
+        <span class="project-visual-icon">🌐</span>
+        <span class="proj-tag">Website SEO</span>
+      </div>
+      <div class="project-body">
+        <h3>Website SEO Optimization</h3>
+        <p>Performed full technical SEO audits, on-page optimization, Core Web Vitals improvements and structured data implementation across multiple websites.</p>
+        <div class="project-result">Improved site health scores & rankings</div>
+      </div>
+    </div>
+    <div class="project-card glass-card reveal">
+      <div class="project-visual pv-7">
+        <div class="project-visual-bg">ADS</div>
+        <span class="project-visual-icon">📊</span>
+        <span class="proj-tag">Performance</span>
+      </div>
+      <div class="project-body">
+        <h3>Paid Campaign Performance Analysis</h3>
+        <p>Analyzed multi-channel paid campaign data — identifying underperforming segments, reallocating budgets, and optimizing creatives for maximum ROAS.</p>
+        <div class="project-result">Optimized ROAS across paid channels</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="sec-label reveal">What I Offer</div>
+  <h2 class="sec-title reveal reveal-delay-1">Services</h2>
+  <p class="sec-sub reveal reveal-delay-2">End-to-end digital marketing solutions built for measurable growth.</p>
+  <div class="services-grid">
+    <div class="service-card glass-card reveal">
+      <span class="svc-icon">🔍</span>
+      <div class="svc-name">SEO Optimization</div>
+      <div class="svc-desc">Comprehensive SEO including technical audits, on-page optimization, keyword strategy, link building and performance monitoring.</div>
+      <div class="svc-price">Organic Growth →</div>
+    </div>
+    <div class="service-card glass-card reveal reveal-delay-1">
+      <span class="svc-icon">📣</span>
+      <div class="svc-name">Meta Ads Management</div>
+      <div class="svc-desc">Full Facebook & Instagram campaign management — strategy, creative, audience targeting, A/B testing and continuous optimization.</div>
+      <div class="svc-price">Paid Campaigns →</div>
+    </div>
+    <div class="service-card glass-card reveal reveal-delay-2">
+      <span class="svc-icon">🚀</span>
+      <div class="svc-name">Performance Marketing</div>
+      <div class="svc-desc">Data-driven paid campaigns across platforms focused on maximizing conversions, reducing CAC and scaling efficiently.</div>
+      <div class="svc-price">Scale Revenue →</div>
+    </div>
+    <div class="service-card glass-card reveal">
+      <span class="svc-icon">📱</span>
+      <div class="svc-name">Social Media Management</div>
+      <div class="svc-desc">Platform strategy, content calendar, post creation, community management and growth tracking across Instagram, LinkedIn & more.</div>
+      <div class="svc-price">Grow Presence →</div>
+    </div>
+    <div class="service-card glass-card reveal reveal-delay-1">
+      <span class="svc-icon">🎨</span>
+      <div class="svc-name">Creative Designing</div>
+      <div class="svc-desc">Professional visual content — ad creatives, social media graphics, posters, flyers and brand materials using Canva & design tools.</div>
+      <div class="svc-price">Visual Identity →</div>
+    </div>
+    <div class="service-card glass-card reveal reveal-delay-2">
+      <span class="svc-icon">🏷️</span>
+      <div class="svc-name">Brand Strategy</div>
+      <div class="svc-desc">Brand positioning, identity development, messaging frameworks and digital presence strategy tailored to your target audience.</div>
+      <div class="svc-price">Build Brand →</div>
+    </div>
+    <div class="service-card glass-card reveal">
+      <span class="svc-icon">🎯</span>
+      <div class="svc-name">Lead Generation Campaigns</div>
+      <div class="svc-desc">Multi-channel campaigns using SEO, paid ads and social media to attract, capture and nurture high-quality leads for your business.</div>
+      <div class="svc-price">Generate Leads →</div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="sec-label reveal">Highlights</div>
+  <h2 class="sec-title reveal reveal-delay-1">Achievements</h2>
+  <div class="achievements-grid">
+    <div class="ach-card glass-card reveal" style="border:1px solid rgba(245,200,66,0.25);background:linear-gradient(135deg,rgba(245,200,66,0.06),rgba(245,200,66,0.02));">
+      <div style="font-size:2.5rem;margin-bottom:.5rem;">🏆</div>
+      <div class="ach-num" style="font-size:1rem;letter-spacing:.08em;text-transform:uppercase;background:linear-gradient(135deg,#f5c842,#ffaa00);-webkit-background-clip:text;background-clip:text;">Employee of the Month</div>
+      <div class="ach-title" style="margin-top:.5rem;">RupeeLending · Fincloud Technologies</div>
+      <div class="ach-desc">Recognised as Employee of the Month at RupeeLending for outstanding performance and contribution to the digital marketing team.</div>
+      <div style="margin-top:1rem;display:inline-flex;align-items:center;gap:6px;font-size:11px;color:#f5c842;font-weight:600;letter-spacing:.08em;text-transform:uppercase;">✦ Official Recognition Award</div>
+    </div>
+    <div class="ach-card glass-card reveal">
+      <div class="ach-num">01</div>
+      <div class="ach-title">SEO Campaign Management</div>
+      <div class="ach-desc">Successfully managed SEO campaigns delivering measurable business growth through improved rankings and organic traffic.</div>
+    </div>
+    <div class="ach-card glass-card reveal reveal-delay-1">
+      <div class="ach-num">02</div>
+      <div class="ach-title">Organic Visibility Growth</div>
+      <div class="ach-desc">Consistently improved online visibility for clients through strategic organic search optimization and content planning.</div>
+    </div>
+    <div class="ach-card glass-card reveal reveal-delay-2">
+      <div class="ach-num">03</div>
+      <div class="ach-title">High-Converting Creatives</div>
+      <div class="ach-desc">Created digital ad creatives and visual content that drove high engagement and improved campaign click-through rates.</div>
+    </div>
+    <div class="ach-card glass-card reveal reveal-delay-3">
+      <div class="ach-num">04</div>
+      <div class="ach-title">Paid Campaign Expertise</div>
+      <div class="ach-desc">Built expertise in audience targeting and paid campaign optimization, consistently improving ROAS and lead quality.</div>
+    </div>
+    <div class="ach-card glass-card reveal">
+      <div class="ach-num">05</div>
+      <div class="ach-title">Multi-Project Delivery</div>
+      <div class="ach-desc">Delivered end-to-end digital marketing solutions for multiple businesses spanning SEO, social media, paid ads and design.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-orb"></div>
+  <div class="contact-inner">
+    <div class="reveal">
+      <div class="sec-label">Get In Touch</div>
+      <h2 class="contact-headline">
+        LET'S<br>
+        <span class="outline">BUILD</span><br>
+        <em>SOMETHING</em><br>
+        GREAT
+      </h2>
+      <p class="contact-desc">Have a project in mind? Looking for a digital marketing partner who delivers real results? Reach out — I respond within 24 hours.</p>
+      <div class="contact-links">
+        <a href="mailto:pulkitarora407@gmail.com" class="contact-link glass-card">
+          <div class="cl-icon" style="background:rgba(108,99,255,0.15);">📧</div>
+          <div>
+            <div class="cl-label">Email</div>
+            <div class="cl-value">pulkitarora407@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/pulkit-arora-331b03295" target="_blank" class="contact-link glass-card">
+          <div class="cl-icon" style="background:rgba(0,119,181,0.15);">💼</div>
+          <div>
+            <div class="cl-label">LinkedIn</div>
+            <div class="cl-value">linkedin.com/in/pulkit-arora-331b03295</div>
+          </div>
+        </a>
+        <a href="https://www.instagram.com/flexwpulkit/" target="_blank" rel="noopener noreferrer" class="contact-link glass-card">
+          <div class="cl-icon" style="background:rgba(255,107,107,0.15);">📸</div>
+          <div>
+            <div class="cl-label">Instagram</div>
+            <div class="cl-value">@flexwpulkit</div>
+          </div>
+        </a>
+        <a href="#" class="contact-link glass-card">
+          <div class="cl-icon" style="background:rgba(67,233,123,0.15);">🌐</div>
+          <div>
+            <div class="cl-label">Portfolio</div>
+            <div class="cl-value">pulkitarora.in</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <div class="sec-label">Send a Message</div>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="field">
+            <label>Your Name</label>
+            <input type="text" placeholder="John Smith" />
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input type="email" placeholder="john@company.com" />
+          </div>
+        </div>
+        <div class="field">
+          <label>Service Interested In</label>
+          <select>
+            <option value="" disabled selected>Select a service</option>
+            <option>SEO Optimization</option>
+            <option>Meta Ads Management</option>
+            <option>Performance Marketing</option>
+            <option>Social Media Management</option>
+            <option>Creative Designing</option>
+            <option>Brand Strategy</option>
+            <option>Lead Generation</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Message</label>
+          <textarea rows="5" placeholder="Tell me about your project, goals, and timeline..."></textarea>
+        </div>
+        <button class="form-submit" id="submitBtn" onclick="submitForm()">Send Message ✦</button>
+        <div id="form-status" style="margin-top:0.8rem;font-size:13.5px;text-align:center;display:none;padding:0.8rem 1rem;border-radius:10px;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Pulkit<span>.</span></div>
+  <ul class="footer-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="footer-copy">Designed & Marketed by Pulkit Arora · © 2026</div>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const follower = document.getElementById('cursor-follower');
+let mx = 0, my = 0, fx = 0, fy = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+});
+function animFollower() {
+  fx += (mx - fx) * 0.12; fy += (my - fy) * 0.12;
+  follower.style.left = fx + 'px'; follower.style.top = fy + 'px';
+  requestAnimationFrame(animFollower);
+}
+animFollower();
+document.querySelectorAll('a, button, .glass-card, .chip, .tool-pill').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.width = '20px'; cursor.style.height = '20px';
+    follower.style.width = '50px'; follower.style.height = '50px';
+    follower.style.borderColor = 'rgba(108,99,255,0.6)';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.width = '12px'; cursor.style.height = '12px';
+    follower.style.width = '36px'; follower.style.height = '36px';
+    follower.style.borderColor = 'rgba(108,99,255,0.4)';
+  });
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+reveals.forEach(r => io.observe(r));
+
+// Nav shrink on scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').style.padding = window.scrollY > 60 ? '0.9rem 6vw' : '1.4rem 6vw';
+});
+
+// Active nav link highlight
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) current = s.id; });
+  navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : ''; });
+});
+
+// ── GOOGLE SHEETS FORM SUBMISSION ──
+// IMPORTANT: Replace the URL below with YOUR Google Apps Script Web App URL
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyeWZMS86fzHoCqmgM4PBvx4kBK4l0SU48qi_E2aZrFSwR5L0_utnfzyvLZsQPYFS88/exec';
+
+async function submitForm() {
+  const btn = document.getElementById('submitBtn');
+  const status = document.getElementById('form-status');
+
+  const name    = document.querySelector('input[placeholder="John Smith"]').value.trim();
+  const email   = document.querySelector('input[placeholder="john@company.com"]').value.trim();
+  const service = document.querySelector('select').value;
+  const message = document.querySelector('textarea').value.trim();
+
+  // Validation
+  if (!name || !email || !message) {
+    status.style.display = 'block';
+    status.style.background = 'rgba(255,107,107,0.12)';
+    status.style.color = '#ff6b6b';
+    status.style.border = '1px solid rgba(255,107,107,0.25)';
+    status.textContent = '⚠ Please fill in your name, email and message.';
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    status.style.display = 'block';
+    status.style.background = 'rgba(255,107,107,0.12)';
+    status.style.color = '#ff6b6b';
+    status.style.border = '1px solid rgba(255,107,107,0.25)';
+    status.textContent = '⚠ Please enter a valid email address.';
+    return;
+  }
+  if (APPS_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbyeWZMS86fzHoCqmgM4PBvx4kBK4l0SU48qi_E2aZrFSwR5L0_utnfzyvLZsQPYFS88/exec') {
+    status.style.display = 'block';
+    status.style.background = 'rgba(245,200,66,0.12)';
+    status.style.color = '#f5c842';
+    status.style.border = '1px solid rgba(245,200,66,0.25)';
+    status.textContent = '⚠ Please add your Google Apps Script URL in the HTML file to enable form submission.';
+    return;
+  }
+
+  // Loading state
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  btn.style.opacity = '0.7';
+  status.style.display = 'none';
+
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, service, message })
+    });
+
+    // Success (no-cors means we can't read response, but if no error thrown it worked)
+    status.style.display = 'block';
+    status.style.background = 'rgba(67,233,123,0.1)';
+    status.style.color = '#43e97b';
+    status.style.border = '1px solid rgba(67,233,123,0.25)';
+    status.textContent = '✦ Message sent! I will get back to you within 24 hours.';
+
+    // Clear form
+    document.querySelector('input[placeholder="John Smith"]').value = '';
+    document.querySelector('input[placeholder="john@company.com"]').value = '';
+    document.querySelector('select').value = '';
+    document.querySelector('textarea').value = '';
+
+    btn.textContent = 'Message Sent ✦';
+    btn.style.background = 'linear-gradient(135deg, #43e97b, #38f9d7)';
+
+  } catch (err) {
+    status.style.display = 'block';
+    status.style.background = 'rgba(255,107,107,0.12)';
+    status.style.color = '#ff6b6b';
+    status.style.border = '1px solid rgba(255,107,107,0.25)';
+    status.textContent = '✕ Something went wrong. Please try emailing directly.';
+    btn.disabled = false;
+    btn.textContent = 'Send Message ✦';
+    btn.style.opacity = '1';
+  }
+}
+</script>
+</body>
+</html>
