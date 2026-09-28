@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -420,20 +421,40 @@ footer{border-top:1px solid var(--glass-border);padding:2.5rem 6vw;display:flex;
     </div>
     <div class="reveal">
       <div class="sec-label">Send a Message</div>
-      <div class="contact-form">
-        <div class="form-row">
-          <div class="field"><label>Your Name</label><input type="text" placeholder="John Smith"></div>
-          <div class="field"><label>Email</label><input type="email" placeholder="john@company.com"></div>
-        </div>
-        <div class="field"><label>Service Interested In</label>
-          <select><option value="" disabled selected>Select a service</option><option>SEO Optimization</option><option>Meta Ads Management</option><option>Website Design</option><option>Social Media Management</option><option>Creative Designing</option><option>Brand Strategy</option></select>
-        </div>
-        <div class="field"><label>Message</label><textarea rows="5" placeholder="Tell me about your project..."></textarea></div>
-        <button class="form-submit" onclick="alert('Connect this button to your Formspree/Apps Script endpoint.')">Send Message ✦</button>
-      </div>
-    </div>
-  </div>
+      <section id="contact">
+  <h2>Contact Me</h2>
+  <form id="contact-form" action="https://formspree.io/f/mlgkdaag" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+    <p id="form-status" style="margin-top:10px;"></p>
+  </form>
 </section>
+
+<script>
+  const form = document.getElementById("contact-form");
+  const statusEl = document.getElementById("form-status");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    statusEl.textContent = "Sending...";
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      });
+      if (res.ok) {
+        statusEl.textContent = "Thanks! Your message has been sent.";
+        form.reset();
+      } else {
+        statusEl.textContent = "Oops! Something went wrong. Please try again.";
+      }
+    } catch (err) {
+      statusEl.textContent = "Network error. Please try again.";
+    }
+  });
+</script>
 
 <footer>
   <div class="footer-logo">Pulkit<span>.</span></div>
